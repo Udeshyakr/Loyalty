@@ -29,7 +29,7 @@ contract loyalty {
     function claimloyalty() external {
         uint256 points = _points[msg.sender];
         require(points > 0, "zero points");
-        require(_token.balanceOf(address(this)) > points, "No loyalty");
+        require(_token.balanceOf(address(this)) >= points, "No loyalty");
         _token.transfer(msg.sender, points);
     }
 }
